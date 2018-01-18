@@ -12,12 +12,14 @@
         android:layout_height="match_parent" />
 
     <ScrollView
+        android:id="@+id/content_scroll_view"
         android:background="#eeeeee"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.comment.MainActivity">
 
         <LinearLayout
+            android:id="@+id/comment_content_layout"
             android:orientation="vertical"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -38,6 +40,7 @@
                 android:layout_height="50dp" />
 
             <EditText
+                android:id="@+id/comment_edit_text"
                 android:layout_width="match_parent"
                 android:gravity="left|top"
                 android:background="@drawable/comment_bg_text"
@@ -46,46 +49,40 @@
                 android:layout_marginRight="10dp"
                 android:layout_height="150dp" />
 
-            <FrameLayout
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <TextView
+                    android:text="@string/comment_score"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="50dp" />
 
-                    <TextView
-                        android:text="@string/comment_score"
-                        android:gravity="center"
-                        android:paddingLeft="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp" />
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_height="45dp"
+                    android:stepSize="1"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:max="5" />
 
-                    <RatingBar
-                        android:layout_width="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_height="45dp"
-                        android:stepSize="1"
-                        android:numStars="5"
-                        android:rating="0"
-                        android:max="5" />
-
-                    <TextView
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/comment_submit"
-                        android:gravity="center"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
-                        android:background="@color/colorAccent"
-                        android:layout_width="match_parent"
-                        android:text="@string/comment_submit"
-                        android:layout_height="50dp" />
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/comment_submit"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:background="@color/colorAccent"
+                    android:layout_width="match_parent"
+                    android:text="@string/comment_submit"
+                    android:layout_height="50dp" />
 
                 </LinearLayout>
-
-            </FrameLayout>
 
         </LinearLayout>
     </ScrollView>
