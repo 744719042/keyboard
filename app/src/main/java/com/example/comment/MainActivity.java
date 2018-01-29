@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.EditText;
 import android.widget.ScrollView;
 
@@ -31,6 +32,30 @@ public class MainActivity extends AppCompatActivity implements KeyBoardLayout.Ke
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getActionMasked() == MotionEvent.ACTION_DOWN && !isSoftActive) {
                     scrollView.scrollTo(0, editText.getBottom());
+                }
+                return false;
+            }
+        });
+
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            private int mLastX;
+            private int mLastY;
+            private int mTouchSlop = ViewConfiguration.get(getApplicationContext()).getScaledTouchSlop();
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int x = (int) event.getRawX(), y = (int) event.getRawY();
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mLastX = x;
+                        mLastY = y;
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (Math.abs(mLastY - y) > mTouchSlop && isSoftActive) {
+                            KeyboardUtils.hideSoftInputFromWindow(editText);
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
                 }
                 return false;
             }

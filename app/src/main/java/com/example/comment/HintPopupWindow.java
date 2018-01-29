@@ -5,7 +5,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,25 +64,16 @@ public class HintPopupWindow implements View.OnClickListener {
                 popupWindow.setHeight(v.getResources().getDimensionPixelSize(R.dimen.comment_hint_height)
                         + imageView.getLayoutParams().height);
                 popupWindow.update(CommonUtils.getScreenWidth(), popupWindow.getHeight());
-                hideSoftInput();
+                KeyboardUtils.hideSoftInput(editText);
             }
         } else {
             button.setText(R.string.comment_hide_keyboard);
             popupWindow.setHeight(originHeight);
             popupWindow.update(CommonUtils.getScreenWidth(), popupWindow.getHeight());
-            showSoftInput();
+            KeyboardUtils.showSoftInput(editText);
         }
     }
 
-    private void showSoftInput() {
-        InputMethodManager inputManager = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.showSoftInput(editText, 0);
-    }
-
-    private void hideSoftInput() {
-        InputMethodManager inputManager = (InputMethodManager) editText.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromInputMethod(editText.getWindowToken(), 0);
-    }
 
     public boolean isVisible() {
         return popupWindow.isShowing();
