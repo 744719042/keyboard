@@ -13,13 +13,14 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
-        <activity android:name=".test.TestMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".test.TestMainActivity">
+
         </activity>
         <activity
             android:name=".test.HidePanActivity"

@@ -31,4 +31,22 @@
         android:text="测试stateVisible|AdjustResize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/testHideFromInput"
+        android:text="testHideFromInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/testHideFromWindow"
+        android:text="testHideFromWindow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 </LinearLayout>
